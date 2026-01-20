@@ -6,7 +6,7 @@ export const connectQueue = async () => {
     const channel = await connection.createChannel()
     const queue = "task_queue"
     
-    await channel.assertQueue(queue, {
+    await channel.assertExchange(queue,'fanout', {
       durable: true
     })
 

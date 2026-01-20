@@ -10,7 +10,7 @@ connectQueue().then((queue) => {
     const message = await c.req.json()
     if (!queue) throw new Error("queue not defined");
 
-    queue.channel.sendToQueue(queue.queue, Buffer.from(message.toString()), {
+    queue.channel.publish(queue.queue, Buffer.from(message.toString()), {
       persistent: true
     })
 
